@@ -3,9 +3,7 @@ project(Supermarket.tests)
 set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES
         main.cpp
-        SuperMarketTest.cpp
-        FakeCatalog.cpp
-        FakeCatalog.h)
+        SuperMarketTest.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} )
 find_library(Supermarket.model model ../model)
 target_link_libraries(${PROJECT_NAME}  LINK_PUBLIC Supermarket.model)

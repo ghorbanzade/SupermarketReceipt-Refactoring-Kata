@@ -1,10 +1,10 @@
 #include "ApprovalTests.hpp"
 #include "catch2/catch.hpp"
 
-#include "../model/SupermarketCatalog.h"
-#include "FakeCatalog.h"
-#include "../model/ShoppingCart.h"
-#include "../model/Teller.h"
+#include "../../model/SupermarketCatalog.h"
+#include "../../model/ShoppingCart.h"
+#include "../../model/Teller.h"
+#include "../FakeCatalog.h"
 
 TEST_CASE("TenPercentDiscount", "[Supermarket]")
 {

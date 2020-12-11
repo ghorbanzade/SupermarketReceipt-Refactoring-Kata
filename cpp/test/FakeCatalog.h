@@ -8,9 +8,16 @@
 class FakeCatalog : public SupermarketCatalog {
 public:
 
-    void addProduct(const Product& product, double price) override;
+    void addProduct(const Product& product, double price) override
+    {
+        products[product.getName()] = product;
+        prices[product.getName()] = price;
+    }
 
-    double getUnitPrice(const Product& product) override;
+    double getUnitPrice(const Product& product) override
+    {
+        return prices[product.getName()];
+    }
 
 private:
     std::map<std::string, Product> products;

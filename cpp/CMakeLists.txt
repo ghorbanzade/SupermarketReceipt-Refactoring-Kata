@@ -6,4 +6,4 @@ include_directories(third_party)
 
 enable_testing()
 add_subdirectory(model)
-add_subdirectory(test)
+add_subdirectory(test/original)
