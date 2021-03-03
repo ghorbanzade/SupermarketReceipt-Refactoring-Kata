@@ -19,12 +19,39 @@ You can learn more about Weasel at [getweasel.com](https://getweasel.com).
 
 ## Build Instructions
 
-At this time, building this example requires using the [conan](https://conan.io)
-dependency manager. For convenience, a `build.sh` script is provided at the
-top-level cpp directory. This script provides instructions on how to install
-and setup conan, pull Weasel as a third-party dependency and build this example
-as well as the original example, using CMake. To get started, simply run this
-script from any directory.
+The easiest way to use Weasel as a third-party dependency in your project is
+to use [CMake] version 3.11 or higher. If you do not have a recent version
+of CMake installed already, please consult with their documentation for
+instructions to install it on your platform.
+
+Assuming that your project is already using CMake, you can pull Weasel as a
+dependency, using CMake's [FetchContent] module as shown below.
+
+```cmake
+FetchContent_Declare(
+    weasel
+    GIT_REPOSITORY https://github.com/getweasel/weasel-cpp.git
+    GIT_TAG        origin/main
+)
+FetchContent_MakeAvailable(weasel)
+```
+
+The above CMake code pulls the latest stable code of the Client Library and
+generates a `weasel_client` CMake target to which you can link your own project.
+
+Weasel Client Library for C++ requires OpenSSL to communicate with the Weasel
+Platform through HTTPS. In most platforms, this library is automatically
+discovered and used by the build recipe. But if OpenSSL is not installed in
+the default location, we may need to provide its root directory as a hint to
+the library's build recipe. Below is a typical example of doing so on macOS
+in case OpenSSL is installed through `homebrew`.
+
+```cmake
+set(OPENSSL_ROOT_DIR /usr/local/opt/openssl)
+```
+
+For convenience, a `build.sh` script is provided at the top-level cpp directory.
+To get started, simply run this script from any directory.
 
 ```bash
 ./build.sh
